@@ -10,12 +10,10 @@ export default function App() {
 
   function textChangeHandler(enteredText) {
     setNewGoal(enteredText);
-    console.log(newGoal)
   }
 
   function addGoalHandler() {
     setListGoals(myCurrentGoals => [...myCurrentGoals, newGoal])
-    console.log(listaGoals);
   }
 
   return (
@@ -33,11 +31,14 @@ export default function App() {
       </View>
 
       <View style={styles.goalsContainer}>
-        {listaGoals.map(goal => {
+        {listaGoals.map((goal, i) => {
           return (
-            <Text>{goal}</Text>
+            <View style={styles.goalStyle} key={i}>
+              <Text style={styles.goalText}>{goal}</Text>
+            </View>
           )
-        })
+        }
+        )
         }
       </View>
 
@@ -72,5 +73,16 @@ const styles = new StyleSheet.create({
 
   goalsContainer: {
     flex: 14
+  },
+
+  goalStyle: {
+    padding: 20,
+    backgroundColor: "#ade8f4",
+    marginBottom: 10,
+    borderRadius: 12
+  },
+
+  goalText: {
+    color: "white"
   }
 })
