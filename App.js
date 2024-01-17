@@ -1,4 +1,4 @@
-import { View, TextInput, Button, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, TextInput, Button, Text, StyleSheet, FlatList } from 'react-native';
 import { useState } from 'react';
 
 
@@ -32,17 +32,17 @@ export default function App() {
 
       <View style={styles.goalsContainer}>
 
-        <ScrollView>
+        <FlatList
+          data={listaGoals}
+          renderItem={(dataItem) => {
 
-          {listaGoals.map((goal, i) => {
-            return (
-              <View style={styles.goalStyle} key={i}>
-                <Text style={styles.goalText}>{goal}</Text>
-              </View>
-            )
-          })}
+            <View style={styles.goalStyle} key={dataItem.item}>
+              <Text style={styles.goalText}>{dataItem.item}</Text>
+            </View>
 
-        </ScrollView>
+          }
+          }
+        />
 
       </View>
 
