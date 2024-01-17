@@ -33,7 +33,12 @@ export default function App() {
       </View>
 
       <View style={styles.goalsContainer}>
-        <Text>Your list of goals...</Text>
+        {listaGoals.map(goal => {
+          return (
+            <Text>{goal}</Text>
+          )
+        })
+        }
       </View>
 
     </View>
