@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 export default function App() {
 
-  // declaramos el hook de estado de componente "newGoal"
+  // Declaramos el hook de estado, el cual es un array, con el componente "New Goal"
   const [newGoal, setNewGoal] = useState("");
   const [myGoals, setMyGoals] = useState([]);
 
@@ -60,35 +60,39 @@ export default function App() {
 const styles = new StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 70,
+    paddingTop: 30,
     paddingHorizontal: 15
   },
+
   inputContainer: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 20,
     borderBottomWidth: 1,
-    borderBottomColor: "#CCCCCC",
+    borderBottomColor: "#48cae4",
     alignItems: 'center'
   },
+
   textInput: {
-    borderColor: "#CCCCCC",
+    borderColor: "#48cae4",
     borderWidth: 1,
     width: "70%",
     padding: 10
   },
+
   goalsContainer: {
-    flex: 5,
+    flex: 14,
   },
+
   goalItem: {
     padding: 20,
-    backgroundColor: "#092FE0",
+    backgroundColor: "#ade8f4",
     marginBottom: 10,
     borderRadius: 12,
   },
   goalText: {
-    color: "white"
+    color: "black"
   }
 
 
