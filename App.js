@@ -4,54 +4,55 @@ import { useState } from 'react';
 
 export default function App() {
 
-  // Declaramos el hook de estado, el cual es un array, con el componente "New Goal"
+  // declaramos el hook de estado de componente "newGoal"
   const [newGoal, setNewGoal] = useState("");
-  const [listaGoals, setListGoals] = useState([]);
+  const [myGoals, setMyGoals] = useState([]);
 
   function textChangeHandler(enteredText) {
     setNewGoal(enteredText);
   }
 
   function addGoalHandler() {
-    setListGoals(myCurrentGoals => [...myCurrentGoals,
+    setMyGoals(myCurrentGoals => [...myCurrentGoals,
     {
       id: Date.now(),
       text: newGoal,
     }]);
-
     setNewGoal("");
+
   }
 
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
-          style={styles.textInput}
           onChangeText={textChangeHandler}
+          style={styles.textInput}
           value={newGoal}
-          placeholder='Input your goal'
+          placeholder='Input your Goal!!'
         />
         <Button
           title='Add Goal'
           onPress={addGoalHandler}
         />
       </View>
-
       <View style={styles.goalsContainer}>
 
         <FlatList
-          data={listaGoals}
-          renderItem={(dataItem) => {
-
-            <View style={styles.goalStyle} key={dataItem.item.id}>
+          data={myGoals}
+          renderItem={(dataItem) => (
+            <View style={styles.goalItem} key={dataItem.item.id}>
               <Text style={styles.goalText}>{dataItem.item.text}</Text>
             </View>
-          }
+          )
           }
         />
 
-      </View>
 
+
+
+
+      </View>
     </View>
   );
 }
@@ -59,40 +60,36 @@ export default function App() {
 const styles = new StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 30,
+    paddingTop: 70,
     paddingHorizontal: 15
   },
-
   inputContainer: {
+    flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 20,
     borderBottomWidth: 1,
-    borderBottomColor: "#48cae4",
-    paddingBottom: 20,
-    alignItems: "center",
-    flex: 1
+    borderBottomColor: "#CCCCCC",
+    alignItems: 'center'
   },
-
   textInput: {
+    borderColor: "#CCCCCC",
     borderWidth: 1,
-    borderColor: "#48cae4",
     width: "70%",
     padding: 10
   },
-
   goalsContainer: {
-    flex: 14
+    flex: 5,
   },
-
-  goalStyle: {
+  goalItem: {
     padding: 20,
-    backgroundColor: "#ade8f4",
+    backgroundColor: "#092FE0",
     marginBottom: 10,
-    borderRadius: 12
+    borderRadius: 12,
   },
-
   goalText: {
-    color: "black"
+    color: "white"
   }
+
+
 })
