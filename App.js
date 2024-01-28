@@ -13,7 +13,13 @@ export default function App() {
   }
 
   function addGoalHandler() {
-    setListGoals(myCurrentGoals => [...myCurrentGoals, newGoal])
+    setListGoals(myCurrentGoals => [...myCurrentGoals,
+    {
+      id: Date.now(),
+      text: newGoal,
+    }]);
+
+    setNewGoal("");
   }
 
   return (
@@ -22,6 +28,7 @@ export default function App() {
         <TextInput
           style={styles.textInput}
           onChangeText={textChangeHandler}
+          value={newGoal}
           placeholder='Input your goal'
         />
         <Button
@@ -36,10 +43,9 @@ export default function App() {
           data={listaGoals}
           renderItem={(dataItem) => {
 
-            <View style={styles.goalStyle} key={dataItem.item}>
-              <Text style={styles.goalText}>{dataItem.item}</Text>
+            <View style={styles.goalStyle} key={dataItem.item.id}>
+              <Text style={styles.goalText}>{dataItem.item.text}</Text>
             </View>
-
           }
           }
         />
@@ -87,6 +93,6 @@ const styles = new StyleSheet.create({
   },
 
   goalText: {
-    color: "white"
+    color: "black"
   }
 })
