@@ -3,6 +3,8 @@ import { useState } from 'react';
 
 // Añadimos import para el componente
 import GoalInput from './components/GoalInput';
+import GoalItem from './components/GoalItem';
+
 
 
 export default function App() {
@@ -28,9 +30,7 @@ export default function App() {
         <FlatList
           data={myGoals}
           renderItem={(dataItem) => (
-            <View style={styles.goalItem} key={dataItem.item.id}>
-              <Text style={styles.goalText}>{dataItem.item.text}</Text>
-            </View>
+            <GoalItem key={dataItem.item.id} goal={dataItem.item} />
           )
           }
         />
@@ -57,17 +57,5 @@ const styles = new StyleSheet.create({
 
   goalsContainer: {
     flex: 14,
-  },
-
-  goalItem: {
-    padding: 20,
-    backgroundColor: "#ade8f4",
-    marginBottom: 10,
-    borderRadius: 12,
-  },
-  goalText: {
-    color: "black"
   }
-
-
 })
