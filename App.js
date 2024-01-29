@@ -6,7 +6,6 @@ import GoalInput from './components/GoalInput';
 import GoalItem from './components/GoalItem';
 
 
-
 export default function App() {
 
   // Declaramos el hook de estado, el cual es un array, con el componente "New Goal"
@@ -20,6 +19,13 @@ export default function App() {
     }]);
   }
 
+  function onDeleteGoalHandler(id) {
+    setMyGoals((myCurrentGoals) => {
+      return myCurrentGoals.filter((goal) => goal.id != id)
+    })
+
+  }
+
   return (
     <View style={styles.container}>
 
@@ -30,8 +36,11 @@ export default function App() {
         <FlatList
           data={myGoals}
           renderItem={(dataItem) => (
-            <GoalItem key={dataItem.item.id} goal={dataItem.item} />
-          )
+            <GoalItem
+              key={dataItem.item.id} ç
+              goal={dataItem.item}
+              onDeleteGoal={onDeleteGoalHandler}
+            />)
           }
         />
 
