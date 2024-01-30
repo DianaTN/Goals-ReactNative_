@@ -15,11 +15,12 @@ export default function App() {
 
 
   function addGoalHandler(newGoalText) {
-    setMyGoals(myCurrentGoals => [...myCurrentGoals,
-    {
+    setMyGoals(myCurrentGoals => [{
       id: Date.now(),
       text: newGoalText,
-    }]);
+    }, ...myCurrentGoals
+    ]);
+    setModalVisible(false);
   }
 
   function onDeleteGoalHandler(id) {
