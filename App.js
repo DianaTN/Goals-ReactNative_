@@ -4,6 +4,7 @@ import { useState } from 'react';
 // Añadimos import para el componente
 import GoalInput from './components/GoalInput';
 import GoalItem from './components/GoalItem';
+import { StatusBar } from 'expo-status-bar';
 
 
 export default function App() {
@@ -29,35 +30,37 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-
-      <Button
-        title='Add New Goal'
-        onPress={() => setModalVisible(true)}
-      />
-
-      <GoalInput
-        onNewGoal={addGoalHandler}
-        onCancel={() => setModalVisible(false)}
-        visible={modalVisible}
-      />
-
-      <View style={styles.goalsContainer}>
-
-        <FlatList
-          data={myGoals}
-          renderItem={(dataItem) => (
-            <GoalItem
-              key={dataItem.item.id} ç
-              goal={dataItem.item}
-              onDeleteGoal={onDeleteGoalHandler}
-            />)
-          }
+    <>
+      <StatusBar style='light' />
+      <View style={styles.container}>
+        <Button
+          title='Add New Goal'
+          onPress={() => setModalVisible(true)}
+          color="#b496dc"
         />
 
-      </View>
+        <GoalInput
+          onNewGoal={addGoalHandler}
+          onCancel={() => setModalVisible(false)}
+          visible={modalVisible}
+        />
 
-    </View >
+        <View style={styles.goalsContainer}>
+          <FlatList
+            data={myGoals}
+            renderItem={(dataItem) => (
+              <GoalItem
+                key={dataItem.item.id} ç
+                goal={dataItem.item}
+                onDeleteGoal={onDeleteGoalHandler}
+              />
+            )
+            }
+          />
+        </View>
+
+      </View >
+    </>
   );
 }
 
